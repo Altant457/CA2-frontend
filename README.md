@@ -17,5 +17,7 @@ HTTPS (don't forget `ufw allow 443` to allow https traffic).*
 
 ### Getting Started
 
+**Remember to run `npm install` after cloning. Else nothing will work.**
+
 To start using this project, edit the URL in `src/settings.js` and the ip 
 in `deploy.sh`, so they point at your server. Then you should be good to go.
