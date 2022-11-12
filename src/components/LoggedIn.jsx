@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
-import facade from "../apiFacade.js";
+import React from "react"
+import facade from "../apiFacade.js"
 
-export default function LoggedIn({setLoggedIn}) {
+export default function LoggedIn({ setLoggedIn, setUser }) {
 
     const logout = () => {
         facade.logout()
         setLoggedIn(false)
+        setUser("")
     }
 
     return (
@@ -13,5 +14,4 @@ export default function LoggedIn({setLoggedIn}) {
             <button onClick={logout}>Logout</button>
         </div>
     )
-
 }

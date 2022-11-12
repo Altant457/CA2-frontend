@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-function Home(props) {
+const Home = () => {
 
     return (
         <div>
             <h3>Homepage</h3>
         </div>
-    );
+    )
 }
 
-export default Home;
+export default Home

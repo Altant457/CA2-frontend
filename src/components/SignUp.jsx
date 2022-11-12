@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
-import facade from "../apiFacade.js";
+import React, { useState } from 'react'
+import facade from "../apiFacade.js"
 
 function SignUp({setLoggedIn}) {
-    const init = {username: "", password: "", rPassword: ""};
-    const [signUpInfo, setSignUpInfo] = useState(init);
+    const init = {username: "", password: "", rPassword: ""}
+    const [signUpInfo, setSignUpInfo] = useState(init)
 
 
     const createUser = (evt) => {
         evt.preventDefault();
         if (signUpInfo.password === signUpInfo.rPassword) {
 
-            facade.createUser(signUpInfo.username, signUpInfo.password, signUpInfo.rPassword)
+            facade.createUser(signUpInfo.username, signUpInfo.password)
                 .then(() => {
-                    facade.login(signUpInfo.username, signUpInfo.password).then(() => setLoggedIn(true));
+                    facade.login(signUpInfo.username, signUpInfo.password).then(() => setLoggedIn(true))
+                    alert(`User ${signUpInfo.username} has been registered`)
                     setSignUpInfo({username: "", password: "", rPassword: ""})
                 })
                 .catch(err => {
@@ -44,10 +45,7 @@ function SignUp({setLoggedIn}) {
                 <button onClick={createUser} type="submit">Sign Up</button>
             </form>
         </div>
-    );
+    )
 }
-
-
-//TODO besked om at man er oprettet
 
 export default SignUp;

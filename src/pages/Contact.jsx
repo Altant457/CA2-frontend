@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Contact({address}) {
     return (
@@ -12,4 +12,4 @@ function Contact({address}) {
     );
 }
 
-export default Contact;
+export default Contact

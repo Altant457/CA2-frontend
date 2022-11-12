@@ -1,10 +1,8 @@
-import React, {useRef, useState} from 'react';
-import facade from "../apiFacade.js";
-import SignUp from "./SignUp.jsx";
-import {Link} from "react-router-dom";
+import React, { useState } from 'react'
+import facade from "../apiFacade.js"
 
-function Login({setLoggedIn, setErrorMsg}) {
-    const init = {username: "", password: ""};
+const Login = ({ setLoggedIn, setErrorMsg, setUser }) => {
+    const init = {username: "", password: ""}
     const [loginCredentials, setLoginCredentials] = useState(init);
 
     const performLogin = (evt) => {
@@ -14,7 +12,10 @@ function Login({setLoggedIn, setErrorMsg}) {
 
     const login = (user, pass) => {
         facade.login(user, pass)
-            .then(res => setLoggedIn(true))
+            .then(res => {
+                setLoggedIn(true)
+                setUser(user)
+            })
     }
 
     const onChange = (evt) => {
@@ -33,4 +34,4 @@ function Login({setLoggedIn, setErrorMsg}) {
     )
 }
 
-export default Login;
+export default Login
