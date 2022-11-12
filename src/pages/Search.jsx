@@ -14,9 +14,11 @@ const Search = ({ loggedIn, user }) => {
 
   const searchHandler = (e) => {
     e.preventDefault()
-    console.log(query)
-    facade.getMultiAnime(query, user)
-        .then(setSearcResults)
+    if(loggedIn) {
+      console.log(query);
+      facade.getMultiAnime(query, user)
+          .then(setSearcResults);
+    }
   }
 
   const changeHandler = () => {

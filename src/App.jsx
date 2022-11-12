@@ -26,7 +26,7 @@ function App() {
         <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn} setUser={setUser} />
         <Routes>
           <Route path="" element={<Home />} />
-          <Route path="/search" element={<Search loggedIn={loggedIn} user={user}/>} />
+          <Route path="/search" element={<Search loggedIn={loggedIn} user={user} />} />
           <Route path="/contact" element={<Contact address={obj} />} />
           <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
           <Route path="/pokemon" element={<Pokemon/>} />
