@@ -43,7 +43,9 @@ function apiFacade() {
     const opts = makeOptions("POST", true, {query: query, username: username})
     try {
       const res = await fetch(BASE_URL + "/info/anime/multi", opts)
-      return handleHttpErrors(res)
+      const data = await handleHttpErrors(res)
+      setToken(data.token)
+      return data.data
     } catch(err) {
       handleErrors(err)
     }
