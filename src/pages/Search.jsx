@@ -68,7 +68,9 @@ const Search = ({ loggedIn, user }) => {
                             height={402}/>
                     <div className={"fw-bold text-nowrap"}>
                       <div className={"fs-1"}>{anime.name}</div>
-                      <div>Airdate: {anime.startDate} {anime.endDate !== "" && (<>to {anime.endDate}</>)}</div>
+                      <div>
+                        Airdate: {anime.startDate !== "" && <>{anime.startDate}</>} {anime.endDate !== "" && (<>to {anime.endDate}</>)}
+                      </div>
                       <div>Status: {(anime.status[0].toUpperCase() + anime.status.substring(1))}</div>
                       <div className={"fs-4"}>Synopsis</div>
                     </div>
