@@ -8,6 +8,21 @@ const Watchlist = ({ user, watchlist, setWatchlist, loggedIn }) => {
     return doc.documentElement.textContent;
   }
 
+  const dynamicSort = (property) => {
+    let sortOrder = 1;
+    if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substring(1);
+    }
+    return function (a,b) {
+      /* next line works with strings and numbers,
+       * and you may want to customize it to your needs
+       */
+      let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+    }
+  }
+
   const removeFromWatchlist = (e) => {
     e.preventDefault()
     let body = {
@@ -25,7 +40,9 @@ const Watchlist = ({ user, watchlist, setWatchlist, loggedIn }) => {
       <>
         <h1 className={"ms-3 mt-3"}>My watchlist</h1>
         <ul className={"list-group"}>
-          {watchlist.map(anime => (
+          {watchlist
+              .sort(dynamicSort("name"))
+              .map(anime => (
               <li key={anime.id} className={"list-group-item d-flex justify-content-between align-items-center"}>
                 <form onSubmit={removeFromWatchlist}>
                   <div className={"ms-2 my-4 me-auto"}>
