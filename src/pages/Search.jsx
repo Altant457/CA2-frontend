@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import facade from "../apiFacade.js"
 
-const Search = ({ loggedIn, user }) => {
+const Search = ({ loggedIn, user, setWatchlist }) => {
 
   const inputRef = useRef()
   const [query, setQuery] = useState("")
@@ -40,7 +40,8 @@ const Search = ({ loggedIn, user }) => {
       }
     }
     facade.addAnimeToWatchlist(body)
-        .then(() => {
+        .then((res) => {
+          setWatchlist(res)
           alert("Anime added to watchlist (unless already added)")
         })
   }

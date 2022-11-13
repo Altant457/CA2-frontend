@@ -29,11 +29,13 @@ function apiFacade() {
       .catch(handleErrors)
   }
 
-  const getSingleAnime = async (id) => {
-    const opts = makeOptions("POST", true, {id: id})
+  const getWatchlist = async (username) => {
+    const opts = makeOptions("POST", true, {username: username})
     try {
-      const res = await fetch(BASE_URL + "/info/anime/single", opts)
-      return handleHttpErrors(res)
+      const res = await fetch(BASE_URL + "/info/user/watchlist", opts)
+      const data = await handleHttpErrors(res)
+      setToken(data.token)
+      return data.animeList
     } catch(err) {
       handleErrors(err)
     }
@@ -57,7 +59,7 @@ function apiFacade() {
       const res = await fetch(BASE_URL + "/info/user/watchlist/add", opts)
       const data = await handleHttpErrors(res)
       setToken(data.token)
-      return data
+      return data.animelist
     } catch(err) {
       handleErrors(err)
     }
@@ -69,7 +71,7 @@ function apiFacade() {
       const res = await fetch(BASE_URL + "/info/user/watchlist/remove", opts)
       const data = await handleHttpErrors(res)
       setToken(data.token)
-      return data
+      return data.animelist
     } catch(err) {
       handleErrors(err)
     }
@@ -83,6 +85,7 @@ function apiFacade() {
         const fixedName = user[0].toUpperCase() + user.substring(1)
         document.querySelector("#welcomeUser").innerHTML = `Welcome, ${fixedName}`
         setToken(res.token)
+        return getWatchlist(user)
       })
   }
 
@@ -131,7 +134,7 @@ function apiFacade() {
     createUser,
     fetchData,
     findPokemon,
-    getSingleAnime,
+    getWatchlist,
     getMultiAnime,
     addAnimeToWatchlist,
     removeAnimeFromWatchlist

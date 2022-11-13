@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import facade from "../apiFacade.js"
 
-const Login = ({ setLoggedIn, setErrorMsg, setUser }) => {
+const Login = ({ setLoggedIn, setErrorMsg, setUser, setWatchlist }) => {
     const init = {username: "", password: ""}
     const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -15,6 +15,7 @@ const Login = ({ setLoggedIn, setErrorMsg, setUser }) => {
             .then(res => {
                 setLoggedIn(true)
                 setUser(user)
+                setWatchlist(res)
             })
     }
 

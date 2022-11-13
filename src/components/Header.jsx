@@ -5,7 +5,7 @@ import LoggedIn from "./LoggedIn.jsx"
 import "../styles/header.css"
 
 
-function Header({setErrorMsg, loggedIn, setLoggedIn, setUser}) {
+function Header({ setErrorMsg, loggedIn, setLoggedIn, setUser, setWatchlist }) {
 
 
   return (
@@ -19,11 +19,12 @@ function Header({setErrorMsg, loggedIn, setLoggedIn, setUser}) {
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/pokemon">Pokemon</NavLink>
           {!loggedIn ? null : (
-              <NavLink to="/anime">Anime</NavLink>
+              <NavLink to="/watchlist">My Watchlist</NavLink>
           )}
         </div>
         <div className="topnavRight">
-          {!loggedIn ? (<Login setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg} setUser={setUser}/>) :
+          {!loggedIn ? (<Login setLoggedIn={setLoggedIn} setErrorMsg={setErrorMsg}
+                               setUser={setUser} setWatchlist={setWatchlist}/>) :
               (<div>
                 <LoggedIn setLoggedIn={setLoggedIn} setUser={setUser} />
               </div>)}
