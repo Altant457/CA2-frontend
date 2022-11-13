@@ -59,7 +59,7 @@ function apiFacade() {
       const res = await fetch(BASE_URL + "/info/user/watchlist/add", opts)
       const data = await handleHttpErrors(res)
       setToken(data.token)
-      return data.animelist
+      return data.animeList
     } catch(err) {
       handleErrors(err)
     }
@@ -71,7 +71,7 @@ function apiFacade() {
       const res = await fetch(BASE_URL + "/info/user/watchlist/remove", opts)
       const data = await handleHttpErrors(res)
       setToken(data.token)
-      return data.animelist
+      return data.animeList
     } catch(err) {
       handleErrors(err)
     }
